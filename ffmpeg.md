@@ -10,4 +10,4 @@
 
 **Center crop video from ultrawide to 16:9:**
 
-`ffmpeg -i input.mp4 -filter:v "crop=-1:1440:440:0" -c copy out.mp4`
+`ffmpeg -i input.mp4 -filter:v "crop=2560:1440:440:0" -c:a copy out.mp4`
