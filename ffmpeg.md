@@ -8,6 +8,10 @@
 
 ## Common commands:
 
-**Center crop video from ultrawide to 16:9:**
+**Center crop (landscape) video to 16:9:**
 
-`ffmpeg -i input.mp4 -filter:v "crop=2560:1440:440:0" -c:a copy out.mp4`
+`ffmpeg -i input.mp4 -filter:v "crop=(ih*(16/9)):ih:((iw*9-16*ih)/18):0" -c:a copy out.mp4`
+
+**Center crop to 16:9, then resize to 720p:**
+
+`ffmpeg -i input.mp4 -filter:v "crop=(ih*(16/9)):ih:((iw*9-16*ih)/18):0, scale=-1:720" -c:a copy out.mp4`
