@@ -26,18 +26,20 @@ ffmpeg -i input.mp4 -filter:v "crop=(ih*(16/9)):ih:((iw*9-16*ih)/18):0, scale=-1
 ffmpeg.exe -i input.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" output.mp4
 ```
 
-### Convert to gif
-
-```
-ffmpeg -i input.mp4 -vf "fps=30,scale=830:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
-```
-
 ### Merge two audio streams from the same video 
 
 ```
  -filter_complex amix=inputs=2:duration=longest
  ```
+ 
+ See also https://stackoverflow.com/questions/14498539/how-to-overlay-downmix-two-audio-files-using-ffmpeg
 
+
+### Convert to gif
+
+```
+ffmpeg -i input.mp4 -vf "fps=30,scale=830:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
+```
 
  - fps filter sets the frame rate. A rate of 10 frames per second is used in the example.
  - scale filter will resize the output to 830 pixels wide and automatically determine the height while preserving the aspect ratio. The lanczos scaling algorithm is used in this example.
