@@ -32,6 +32,12 @@ ffmpeg.exe -i input.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw
 ffmpeg -i input.mp4 -vf "fps=30,scale=830:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
 ```
 
+### Merge two audio streams from the same video 
+
+```
+ -filter_complex amix=inputs=2:duration=longest
+ ```
+
 
  - fps filter sets the frame rate. A rate of 10 frames per second is used in the example.
  - scale filter will resize the output to 830 pixels wide and automatically determine the height while preserving the aspect ratio. The lanczos scaling algorithm is used in this example.
