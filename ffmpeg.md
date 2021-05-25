@@ -36,9 +36,14 @@ ffmpeg.exe -i input.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw
 
 ```
  -filter_complex amix=inputs=2:duration=longest
- ```
+```
  
  See also https://stackoverflow.com/questions/14498539/how-to-overlay-downmix-two-audio-files-using-ffmpeg
+ 
+Increase volume of my mic:
+```
+-filter_complex "[0:a:1]volume=4:precision=fixed[a2];[0:a:0][a2]amix=inputs=2:duration=longest"
+```
 
 
 ### Convert to gif
