@@ -14,10 +14,21 @@
 ffmpeg -i input.mp4 -filter:v "crop=(ih*(16/9)):ih:((iw*9-16*ih)/18):0" -c:a copy out.mp4
 ```
 
-### Crop just the left half of video
+### Crop just the half of video
 
+#### Left
 ```
 -filter:v "crop=iw/2:ih:0:0"
+```
+
+#### Right
+```
+-filter:v "crop=iw/2:ih:iw/2:0"
+```
+
+#### Right, excluding Chrome + Windows chrome 
+```
+-filter:v "crop=iw/2:(ih-80-50):iw/2:80"
 ```
 
 ### Center crop to 16:9, then resize to 720p
