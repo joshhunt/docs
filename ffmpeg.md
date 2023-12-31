@@ -37,6 +37,14 @@ ffmpeg -i input.mp4 -filter:v "crop=(ih*(16/9)):ih:((iw*9-16*ih)/18):0" -c:a cop
 ffmpeg -i input.mp4 -filter:v "crop=(ih*(16/9)):ih:((iw*9-16*ih)/18):0, scale=-1:720" -c:a copy out.mp
 ```
 
+#### Center crop 16:9 minecraft java, and resize
+
+```
+-filter:v "crop=((ih-71)*(16/9)):(ih-71):((iw*9-16*(ih-71))/18):23"
+-filter:v "crop=((ih-71)*(16/9)):(ih-71):((iw*9-16*(ih-71))/18):24, scale=-1:720"
+-filter:v "crop=((ih-71)*(16/9)):(ih-71):((iw*9-16*(ih-71))/18):24, scale=-1:1080"
+```
+
 ### Convert gif to mp4
 
 ```
